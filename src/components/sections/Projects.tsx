@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { ExternalLink, Github, ArrowUpRight, X, LayoutDashboard, Code2, Rocket } from "lucide-react";
 import Image from "next/image";
@@ -235,16 +235,12 @@ export function Projects() {
               </div>
 
               <div className="p-6 border-t border-border bg-background/50 flex flex-wrap gap-4 mt-auto">
-                <Button className="flex-1 sm:flex-none gap-2 hover:scale-105 transition-transform" asChild>
-                  <a href={selectedProject.link} target="_blank" rel="noopener noreferrer">
-                    <ExternalLink className="w-4 h-4" /> Live Preview
-                  </a>
-                </Button>
-                <Button variant="outline" className="flex-1 sm:flex-none gap-2 hover:scale-105 transition-transform" asChild>
-                  <a href={selectedProject.github} target="_blank" rel="noopener noreferrer">
-                    <Github className="w-4 h-4" /> View Source
-                  </a>
-                </Button>
+                <a href={selectedProject.link} target="_blank" rel="noopener noreferrer" className={buttonVariants({ variant: "default", className: "flex-1 sm:flex-none gap-2 hover:scale-105 transition-transform" })}>
+                  <ExternalLink className="w-4 h-4" /> Live Preview
+                </a>
+                <a href={selectedProject.github} target="_blank" rel="noopener noreferrer" className={buttonVariants({ variant: "outline", className: "flex-1 sm:flex-none gap-2 hover:scale-105 transition-transform" })}>
+                  <Github className="w-4 h-4" /> View Source
+                </a>
               </div>
             </div>
           </div>
