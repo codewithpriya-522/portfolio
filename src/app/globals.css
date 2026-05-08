@@ -105,12 +105,14 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground transition-colors duration-300 antialiased;
-    background-image: 
+    background-image:
       radial-gradient(at 0% 0%, oklch(0.5 0.1 264 / 0.05) 0px, transparent 50%),
       radial-gradient(at 100% 0%, oklch(0.6 0.15 300 / 0.05) 0px, transparent 50%);
   }
+
   html {
     scroll-behavior: smooth;
   }
@@ -120,9 +122,11 @@
   .glass {
     @apply bg-background/60 backdrop-blur-xl border border-white/5;
   }
+
   .glass-card {
     @apply bg-card/40 backdrop-blur-md border border-white/10 hover:border-primary/20 transition-all duration-300;
   }
+
   .text-gradient {
     @apply bg-clip-text text-transparent bg-linear-to-r from-primary to-violet-400;
   }

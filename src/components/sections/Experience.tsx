@@ -40,7 +40,7 @@ export function Experience() {
           {experiences.map((exp, idx) => (
             <div key={idx} className="relative">
               {/* Dot */}
-              <div className="absolute -left-[41px] md:-left-[73px] top-6 w-4 h-4 rounded-full bg-primary shadow-[0_0_15px_rgba(var(--primary),0.5)] border-4 border-background" />
+              <div className="absolute -left-[41px] md:-left-[73px] top-6 w-4 h-4 rounded-full bg-primary shadow-lg shadow-primary/50 border-4 border-background" />
               
               <Card className="glass-card overflow-hidden">
                 <CardContent className="p-6 md:p-8">

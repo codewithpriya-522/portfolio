@@ -113,7 +113,7 @@ export function Projects() {
           {projects.map((project, idx) => (
             <Card 
               key={idx} 
-              className="group relative overflow-hidden bg-background/50 backdrop-blur-sm border-border hover:border-primary/50 transition-all duration-500 flex flex-col h-full cursor-pointer hover:shadow-[0_0_30px_-10px_rgba(var(--primary),0.3)] hover:-translate-y-2"
+              className="group relative overflow-hidden bg-background/50 backdrop-blur-sm border-border hover:border-primary/50 transition-all duration-500 flex flex-col h-full cursor-pointer hover:shadow-2xl hover:shadow-primary/30 hover:-translate-y-2"
               onClick={() => setSelectedProject(project)}
             >
               <div className="relative aspect-[4/3] overflow-hidden">
