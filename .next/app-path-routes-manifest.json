@@ -2,5 +2,14 @@
   "/_global-error/page": "/_global-error",
   "/_not-found/page": "/_not-found",
   "/favicon.ico/route": "/favicon.ico",
+  "/landing-page-1/page": "/landing-page-1",
+  "/landing-page-2/page": "/landing-page-2",
+  "/landing-page-3/page": "/landing-page-3",
+  "/landing-page-4/page": "/landing-page-4",
+  "/landing-page-5/page": "/landing-page-5",
+  "/landing-page-6/page": "/landing-page-6",
+  "/landing-page-7/page": "/landing-page-7",
+  "/landing-page-8/page": "/landing-page-8",
+  "/landing-page-9/page": "/landing-page-9",
   "/page": "/"
 }

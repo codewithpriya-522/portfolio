@@ -46,6 +46,60 @@
       "regex": "^/favicon\\.ico(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/favicon\\.ico(?:/)?$"
+    },
+    {
+      "page": "/landing-page-1",
+      "regex": "^/landing\\-page\\-1(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/landing\\-page\\-1(?:/)?$"
+    },
+    {
+      "page": "/landing-page-2",
+      "regex": "^/landing\\-page\\-2(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/landing\\-page\\-2(?:/)?$"
+    },
+    {
+      "page": "/landing-page-3",
+      "regex": "^/landing\\-page\\-3(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/landing\\-page\\-3(?:/)?$"
+    },
+    {
+      "page": "/landing-page-4",
+      "regex": "^/landing\\-page\\-4(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/landing\\-page\\-4(?:/)?$"
+    },
+    {
+      "page": "/landing-page-5",
+      "regex": "^/landing\\-page\\-5(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/landing\\-page\\-5(?:/)?$"
+    },
+    {
+      "page": "/landing-page-6",
+      "regex": "^/landing\\-page\\-6(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/landing\\-page\\-6(?:/)?$"
+    },
+    {
+      "page": "/landing-page-7",
+      "regex": "^/landing\\-page\\-7(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/landing\\-page\\-7(?:/)?$"
+    },
+    {
+      "page": "/landing-page-8",
+      "regex": "^/landing\\-page\\-8(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/landing\\-page\\-8(?:/)?$"
+    },
+    {
+      "page": "/landing-page-9",
+      "regex": "^/landing\\-page\\-9(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/landing\\-page\\-9(?:/)?$"
     }
   ],
   "dataRoutes": [],
