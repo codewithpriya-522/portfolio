@@ -72,7 +72,7 @@
       "qualities": [
         75
       ],
-      "unoptimized": false,
+      "unoptimized": true,
       "customCacheHandler": false
     },
     "devIndicators": {
@@ -101,6 +101,7 @@
     "compiler": {},
     "expireTime": 31536000,
     "staticPageGenerationTimeout": 60,
+    "output": "export",
     "modularizeImports": {
       "@mui/icons-material": {
         "transform": "@mui/icons-material/{{member}}"
@@ -311,7 +312,7 @@
     "turbopack": {
       "root": "/home/priya/priya/portfolio"
     },
-    "distDirRoot": ".next"
+    "distDirRoot": "dist"
   },
   "appDir": "/home/priya/priya/portfolio",
   "relativeAppDir": "",

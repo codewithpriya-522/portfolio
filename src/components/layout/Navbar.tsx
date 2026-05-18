@@ -4,8 +4,11 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Github, Linkedin, Mail, Sun, Moon } from "lucide-react";
-import { useTheme } from "@/components/theme-provider";
+import { Menu, X, Github, Linkedin, Mail, ChevronDown } from "lucide-react";
+import { MegaMenu } from "./MegaMenu";
+import { landingPages } from "@/lib/landing-pages";
+import { motion, AnimatePresence } from "framer-motion";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 const navItems = [
   { name: "About", href: "#about" },
@@ -15,26 +18,10 @@ const navItems = [
   { name: "Contact", href: "#contact" },
 ];
 
-function ThemeToggle() {
-  const { theme, setTheme } = useTheme();
-
-  return (
-    <Button
-      variant="ghost"
-      size="icon"
-      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      className="rounded-full w-9 h-9 border border-border"
-    >
-      <Sun className="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-      <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-      <span className="sr-only">Toggle theme</span>
-    </Button>
-  );
-}
-
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileLandingPagesOpen, setMobileLandingPagesOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -58,7 +45,19 @@ export function Navbar() {
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-8">
-          {navItems.map((item) => (
+          {navItems.slice(0, 3).map((item) => (
+            <Link
+              key={item.name}
+              href={item.href}
+              className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+            >
+              {item.name}
+            </Link>
+          ))}
+          
+          <MegaMenu />
+
+          {navItems.slice(3).map((item) => (
             <Link
               key={item.name}
               href={item.href}
@@ -96,34 +95,87 @@ export function Navbar() {
       </div>
 
       {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-background border-b border-foreground/5 p-6 flex flex-col gap-4 animate-in fade-in slide-in-from-top-4">
-          {navItems.map((item) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              className="text-lg font-medium"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              {item.name}
-            </Link>
-          ))}
-          <hr className="border-foreground/5" />
-          <div className="flex items-center gap-6 py-2">
-            <Link href="https://github.com/codewithpriya-522" target="_blank">
-              <Github className="w-6 h-6 text-muted-foreground hover:text-primary transition-colors" />
-            </Link>
-            <Link href="https://www.linkedin.com/in/priya-jana-aa7652240/" target="_blank">
-              <Linkedin className="w-6 h-6 text-muted-foreground hover:text-primary transition-colors" />
-            </Link>
-            <Link href="mailto:codewithpriya522@gmail.com">
-              <Mail className="w-6 h-6 text-muted-foreground hover:text-primary transition-colors" />
-            </Link>
-          </div>
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div 
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden absolute top-full left-0 right-0 bg-background border-b border-foreground/5 overflow-hidden"
+          >
+            <div className="p-6 flex flex-col gap-4">
+              {navItems.slice(0, 3).map((item) => (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className="text-lg font-medium"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {item.name}
+                </Link>
+              ))}
 
-          <Button className="w-full">Resume</Button>
-        </div>
-      )}
+              {/* Mobile Landing Pages Accordion */}
+              <div className="flex flex-col">
+                <button 
+                  onClick={() => setMobileLandingPagesOpen(!mobileLandingPagesOpen)}
+                  className="flex items-center justify-between text-lg font-medium py-2"
+                >
+                  Landing Pages
+                  <ChevronDown className={cn("w-5 h-5 transition-transform", mobileLandingPagesOpen && "rotate-180")} />
+                </button>
+                <AnimatePresence>
+                  {mobileLandingPagesOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      className="flex flex-col gap-3 pl-4 pt-2 border-l border-primary/20"
+                    >
+                      {landingPages.map((page) => (
+                        <Link
+                          key={page.id}
+                          href={page.liveUrl || "#"}
+                          className="text-sm text-muted-foreground hover:text-primary py-1"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          {page.title}
+                        </Link>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
+              {navItems.slice(3).map((item) => (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className="text-lg font-medium"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {item.name}
+                </Link>
+              ))}
+              
+              <hr className="border-foreground/5" />
+              <div className="flex items-center gap-6 py-2">
+                <Link href="https://github.com/codewithpriya-522" target="_blank">
+                  <Github className="w-6 h-6 text-muted-foreground hover:text-primary transition-colors" />
+                </Link>
+                <Link href="https://www.linkedin.com/in/priya-jana-aa7652240/" target="_blank">
+                  <Linkedin className="w-6 h-6 text-muted-foreground hover:text-primary transition-colors" />
+                </Link>
+                <Link href="mailto:codewithpriya522@gmail.com">
+                  <Mail className="w-6 h-6 text-muted-foreground hover:text-primary transition-colors" />
+                </Link>
+              </div>
+
+              <Button className="w-full">Resume</Button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 }

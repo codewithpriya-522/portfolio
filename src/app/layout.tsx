@@ -31,7 +31,12 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col font-sans relative">
-        <ThemeProvider defaultTheme="system">
+        <ThemeProvider 
+          attribute="class" 
+          defaultTheme="system" 
+          enableSystem 
+          disableTransitionOnChange
+        >
           <NeuralBackground />
           {children}
         </ThemeProvider>

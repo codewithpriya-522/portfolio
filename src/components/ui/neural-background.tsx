@@ -5,7 +5,7 @@ import { useTheme } from "@/components/theme-provider";
 
 export function NeuralBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const { theme } = useTheme();
+  const { resolvedTheme } = useTheme();
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -63,7 +63,7 @@ export function NeuralBackground() {
       mouse.x += (targetMouse.x - mouse.x) * 0.15;
       mouse.y += (targetMouse.y - mouse.y) * 0.15;
 
-      const isDark = document.documentElement.classList.contains("dark");
+      const isDark = resolvedTheme === "dark";
       
       const gridColor = isDark ? "rgba(255, 255, 255, 0.05)" : "rgba(0, 0, 0, 0.05)";
       const nodeColor = isDark ? "#3b82f6" : "#2563eb";
@@ -219,7 +219,7 @@ export function NeuralBackground() {
       window.removeEventListener("mousemove", handleMouseMove);
       cancelAnimationFrame(animationFrameId);
     };
-  }, [theme]);
+  }, [resolvedTheme]);
  // Re-initialize if theme deeply changes, though the inside draw handles class checks
 
   return (
